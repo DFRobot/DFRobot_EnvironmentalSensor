@@ -1,0 +1,41 @@
+
+#######################################
+# Syntax Map For DFRobot_SCT80S16B
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_EnvironmentalSensor	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+getTemperature	KEYWORD2
+getHumidity	KEYWORD2
+getUltravioletIntensity	KEYWORD2
+getLuminousIntensity	KEYWORD2
+getAtmospherePressure	KEYWORD2
+getElevation	KEYWORD2
+
+
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+DEVICE_PID_GRAVITY	LITERAL1
+DEVICE_PID_BREAKOUT	LITERAL1
+HPA	LITERAL1
+KPA	LITERAL1
+SEN0500/SEN0501_DEFAULT_DEVICE_ADDRESS	LITERAL1
+TEMP_C	LITERAL1
+TEMP_F	LITERAL1
