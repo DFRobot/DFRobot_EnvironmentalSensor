@@ -33,7 +33,7 @@
 #ifndef RTU_BROADCAST_ADDRESS
 #define RTU_BROADCAST_ADDRESS                      0x00 ///< Broadcast address of the modbus protocol is 0x00
 #endif
-#define SEN0500/SEN0501_DEFAULT_DEVICE_ADDRESS             0x22 ///< Default device address of SEN0500/SEN0501 sensor is 0x22
+#define SEN050X_DEFAULT_DEVICE_ADDRESS             0x22 ///< Default device address of SEN0500/SEN0501 sensor is 0x22
 
 class DFRobot_EnvironmentalSensor: public DFRobot_RTU{
 
