@@ -23,9 +23,9 @@
 #include "HardwareSerial.h"
 #endif
 
-
-#if 1
-#define DBG(...) {Serial.print("["); Serial.print(__FUNCTION__); Serial.print("(): "); Serial.print(__LINE__); Serial.print(" ] "); Serial.println(__VA_ARGS__);}
+//#define ENABLE_DBG ///< 打开这个宏, 可以看到程序的详细运行过程
+#ifdef ENABLE_DBG
+#define DBG(...) {Serial.print("[");Serial.print(__FUNCTION__); Serial.print("(): "); Serial.print(__LINE__); Serial.print(" ] "); Serial.println(__VA_ARGS__);}
 #else
 #define DBG(...)
 #endif
