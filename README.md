@@ -6,8 +6,8 @@ DFRobot_EnvironmentalSensor
 The multifunctional environmental sensor(SEN0500/SEN0501) integrates the UV, illumination, atmospheric pressure and temperature and humidity detection functions into one. It features Gravity and Breakout interfaces, and supports UART and I2C data communication, which can be selected by the onboard switch. <br/>
 This Arduino Library developed by DFRobot is specially designed for DFRobot Environmental sensor. Users can use the library to drive their sensor to obtain relevant environmental data conbining with an Arduino mainboard. 
 
-![产品效果图片](../../resources/images/SEN0501.png)
-![产品效果图片](../../resources/images/SEN0500.png)
+![产品效果图片](./resources/images/SEN0501.png)
+![产品效果图片](./resources/images/SEN0500.png)
   
 ## Product Link (https://www.dfrobot.com)
     SKU: SEN0500/SEN0501
