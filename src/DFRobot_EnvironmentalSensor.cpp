@@ -79,7 +79,7 @@ uint16_t DFRobot_EnvironmentalSensor::getDeviceVID(void)
 float DFRobot_EnvironmentalSensor::getTemperature(uint8_t unist)
 {
   uint8_t buffer[2];
-  int16_t data;
+  uint16_t data;
   float temp;
   
   readReg(REG_TEMP,buffer,2);
