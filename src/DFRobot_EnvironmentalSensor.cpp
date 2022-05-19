@@ -18,10 +18,6 @@ typedef uint16_t    platformBitWidth_t;
 typedef uint32_t    platformBitWidth_t;
 #endif
 
-
-
-
-
 DFRobot_EnvironmentalSensor::DFRobot_EnvironmentalSensor(uint8_t addr, TwoWire *pWire)
 {
   _pWire = pWire;
@@ -81,9 +77,7 @@ float DFRobot_EnvironmentalSensor::getTemperature(uint8_t unist)
   uint8_t buffer[2];
   uint16_t data;
   float temp;
-  
   readReg(REG_TEMP,buffer,2);
-
   data = buffer[0] << 8 | buffer[1];
   temp = (-45) +((data * 175.00) / 1024.00 / 64.00);
   if(unist == TEMP_F){
@@ -97,7 +91,6 @@ float DFRobot_EnvironmentalSensor::getHumidity(void)
   uint8_t buffer[2];
   float humidity;
   uint16_t data;
-
   readReg(REG_HUMIDITY,buffer, 2);
   data = ((buffer[0] << 8 | buffer[1]));
   humidity = (float)data * 100 / 65536;
@@ -117,6 +110,10 @@ float DFRobot_EnvironmentalSensor::getUltravioletIntensity(void)
   readReg(REG_ULTRAVIOLET_INTENSITY,buffer,2);
   uvLevel = buffer[0] << 8 | buffer[1];
   float outputVoltage = 3.0 * uvLevel/1024;
+  if(outputVoltage <= 0.99)
+    outputVoltage = 0.99;
+  else if(outputVoltage >= 2.99)
+    outputVoltage = 2.99;
   ultraviolet = mapfloat(outputVoltage, 0.99, 2.9, 0.0, 15.0);
   return ultraviolet;
 }
