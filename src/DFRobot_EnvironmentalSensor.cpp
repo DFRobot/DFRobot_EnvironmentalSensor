@@ -105,16 +105,29 @@ float DFRobot_EnvironmentalSensor::mapfloat(float x, float in_min, float in_max,
 float DFRobot_EnvironmentalSensor::getUltravioletIntensity(void)
 {
   uint16_t uvLevel;
+  uint16_t version = 0;
   uint8_t buffer[2];
   float ultraviolet;
-  readReg(REG_ULTRAVIOLET_INTENSITY,buffer,2);
-  uvLevel = buffer[0] << 8 | buffer[1];
-  float outputVoltage = 3.0 * uvLevel/1024;
-  if(outputVoltage <= 0.99)
-    outputVoltage = 0.99;
-  else if(outputVoltage >= 2.99)
-    outputVoltage = 2.99;
-  ultraviolet = mapfloat(outputVoltage, 0.99, 2.9, 0.0, 15.0);
+  readReg(0x05,buffer,2);
+  version = buffer[0] << 8 | buffer[1];
+  DBG(buffer[0] << 8 | buffer[1]);
+  if(version == 0x1001){
+    readReg(REG_ULTRAVIOLET_INTENSITY,buffer,2);
+    uvLevel = buffer[0] << 8 | buffer[1];
+    DBG("A");
+    DBG(uvLevel);
+    ultraviolet = (float)uvLevel/1800.0;
+  }else{
+    readReg(REG_ULTRAVIOLET_INTENSITY,buffer,2);
+    uvLevel = buffer[0] << 8 | buffer[1];
+    float outputVoltage = 3.0 * uvLevel/1024;
+    if(outputVoltage <= 0.99)
+      outputVoltage = 0.99;
+    else if(outputVoltage >= 2.99)
+      outputVoltage = 2.99;
+    ultraviolet = mapfloat(outputVoltage, 0.99, 2.9, 0.0, 15.0);
+  }
+  
   return ultraviolet;
 }
 

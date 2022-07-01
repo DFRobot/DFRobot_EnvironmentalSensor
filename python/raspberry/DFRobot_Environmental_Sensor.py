@@ -112,13 +112,19 @@ class DFRobot_Environmental_Sensor():
       @brief Get SEN0500/SEN0501 UV intensity index data 
       @return Return the obtained UV intensity index data
     '''
-    rbuf = self._read_reg(0x10, 2)
-    if self._uart_i2c == I2C_MODE:
+    version = self.self._read_reg(0x05, 2)
+    if (version[0] << 8 | version[1]) == 0x1001:
+      rbuf = self._read_reg(0x10, 2)
       data = rbuf[0] << 8 | rbuf[1]
-    elif self._uart_i2c == UART_MODE:
-      data = rbuf[0]
-    outputVoltage = 3.0 * data/1024
-    ultraviolet = (outputVoltage - 0.99) * (15.0 - 0.0) / (2.9 - 0.99) + 0.0 
+      ultraviolet = data / 1800
+    else:
+      rbuf = self._read_reg(0x10, 2)
+      if self._uart_i2c == I2C_MODE:
+        data = rbuf[0] << 8 | rbuf[1]
+      elif self._uart_i2c == UART_MODE:
+        data = rbuf[0]
+      outputVoltage = 3.0 * data/1024
+      ultraviolet = (outputVoltage - 0.99) * (15.0 - 0.0) / (2.9 - 0.99) + 0.0 
     return round(ultraviolet,2)
       
   
