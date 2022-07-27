@@ -61,10 +61,10 @@ void loop()
   Serial.println("-------------------------------");
   Serial.print("Temp: ");
   Serial.print(environment.getTemperature(TEMP_C));
-  Serial.println(" ℃");
+  Serial.println("C");
   Serial.print("Temp: ");
   Serial.print(environment.getTemperature(TEMP_F));
-  Serial.println(" ℉");
+  Serial.println("F");
   Serial.print("Humidity: ");
   Serial.print(environment.getHumidity());
   Serial.println(" %");
