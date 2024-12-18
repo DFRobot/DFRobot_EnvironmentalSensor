@@ -63,9 +63,10 @@ To use this library, first download the library file, paste it into the \Arduino
   /**
    * @fn getUltravioletIntensity
    * @brief Get SEN0500/SEN0501 UV intensity index data 
+   * @param soc UV sensor
    * @return Return the obtained UV intensity index data
    */
-  float getUltravioletIntensity(void);
+  float getUltravioletIntensity(eUVSOC soc = eLTR390UV);
 
   /**
    * @fn getLuminousIntensity

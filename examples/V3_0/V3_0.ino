@@ -1,8 +1,6 @@
 /*!
- *@file  read_data.ino
- *@brief This demo shows how to get data of the SEN0500/SEN0501 sensor and outputs data through I2C or UART.
- *@n Print the data returned by SEN0500/SEN0501 in the serial port monitor.
- * @n connected table
+ *@file  V3_0.ino
+ *@brief This example can obtain data from the SEN0501/SEN0500 V3.0 sensor via UART and I2C.
  * ---------------------------------------------------------------------------------------------------------------
  *    board   |             MCU                | Leonardo/Mega2560/M0 |    UNO    | ESP8266 | ESP32 |  microbit  |
  *     VCC    |            3.3V/5V             |        VCC           |    VCC    |   VCC   |  VCC  |     X      |
@@ -15,7 +13,7 @@
  * @license     The MIT License (MIT)
  * @author      [TangJie](jie.tang@dfrobot.com)
  * @version     V1.0
- * @date        2021-08-31
+ * @date        2024-11-20
  * @url         https://github.com/DFRobot/DFRobot_EnvironmentalSensor
  */
 #include "DFRobot_EnvironmentalSensor.h"
@@ -61,15 +59,15 @@ void loop()
   Serial.println("-------------------------------");
   Serial.print("Temp: ");
   Serial.print(environment.getTemperature(TEMP_C));
-  Serial.println("C");
+  Serial.println(" ℃");
   Serial.print("Temp: ");
   Serial.print(environment.getTemperature(TEMP_F));
-  Serial.println("F");
+  Serial.println(" ℉");
   Serial.print("Humidity: ");
   Serial.print(environment.getHumidity());
   Serial.println(" %");
   Serial.print("Ultraviolet intensity: ");
-  Serial.print(environment.getUltravioletIntensity());
+  Serial.print(environment.getUltravioletIntensity(eS12SD));
   Serial.println(" mw/cm2");
   Serial.print("LuminousIntensity: ");
   Serial.print(environment.getLuminousIntensity());

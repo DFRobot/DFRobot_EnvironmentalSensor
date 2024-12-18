@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*
 '''!
-  @file  read_data.py
-  @brief This demo shows how to get data of the SEN0500/SEN0501 sensor and outputs data through I2C or UART.
-  @n Print the data returned by SEN0500/SEN0501 in the serial port monitor.
+  @file  V1_0.py
+  @brief This example can obtain data from the SEN0501/SEN0500 V1.0 sensor via UART and I2C.
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
   @author      TangJie(jie.tang@dfrobot.com)
@@ -57,7 +56,7 @@ def loop():
   print("Temp: " + str(SEN050X.get_temperature(TEMP_C)) + " 'C\r\n")
   print("Temp: " + str(SEN050X.get_temperature(TEMP_F)) + " 'F\r\n")
   print("Humidity: " + str(SEN050X.get_humidity()) + " %\r\n")
-  print("Ultraviolet intensity: " + str(SEN050X.get_ultraviolet_intensity()) + " mw/cm2\r\n")
+  print("Ultraviolet intensity: " + str(SEN050X.get_ultraviolet_intensity(LTR390UV)) + " mw/cm2\r\n")
   print("LuminousIntensity: " + str(SEN050X.get_luminousintensity()) + " lx\r\n")
   print("Atmospheric pressure: " + str(SEN050X.get_atmosphere_pressure(HPA)) + " hpa\r\n")
   print("Elevation: " + str(SEN050X.get_elevation()) + " m\r\n")

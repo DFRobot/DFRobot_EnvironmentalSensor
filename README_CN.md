@@ -63,9 +63,10 @@ DFRobot_Environmental_Sensor库是DFRobot专门为该传感器写的一个Arduin
   /**
    * @fn getUltravioletIntensity
    * @brief 获取SEN0500/SEN0501紫外线强度指数数据 
+   * @param soc UV 传感器
    * @return 返回获取的紫外线强度指数数据
    */
-  float getUltravioletIntensity(void);
+  float getUltravioletIntensity(eUVSOC soc = eLTR390UV);
 
   /**
    * @fn getLuminousIntensity

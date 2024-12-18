@@ -15,7 +15,7 @@
 #include "Arduino.h"
 #include "Wire.h"
 #include "DFRobot_RTU.h"
-#include "string.h"
+#include "String.h"
 
 #if (defined ARDUINO_AVR_UNO) && (defined ESP8266)
 #include "SoftwareSerial.h"
@@ -34,6 +34,11 @@
 #define RTU_BROADCAST_ADDRESS                      0x00 ///< Broadcast address of the modbus protocol is 0x00
 #endif
 #define SEN050X_DEFAULT_DEVICE_ADDRESS             0x22 ///< Default device address of SEN0500/SEN0501 sensor is 0x22
+
+typedef enum{
+  eLTR390UV,
+  eS12SD
+}eUVSOC;
 
 class DFRobot_EnvironmentalSensor: public DFRobot_RTU{
 
@@ -112,9 +117,10 @@ public:
   /**
    * @fn getUltravioletIntensity
    * @brief Get SEN0500/SEN0501 ultraviolet intensity index data 
+   * @param soc UV sensor
    * @return Return the obtained ultraviolet intensity index data
    */
-  float getUltravioletIntensity(void);
+  float getUltravioletIntensity(eUVSOC soc = eLTR390UV);
 
   /**
    * @fn getLuminousIntensity

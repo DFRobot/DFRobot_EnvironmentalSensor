@@ -34,6 +34,9 @@ KPA                       = 0X02
 TEMP_C                    = 0X03
 TEMP_F                    = 0X04
 
+LTR390UV = 0x00
+S12DS    = 0x01
+
 class DFRobot_Environmental_Sensor():
   '''!
     @brief Define DFRobot_Environmental_Sensor basic class
@@ -107,24 +110,24 @@ class DFRobot_Environmental_Sensor():
     return humidity
   
  
-  def get_ultraviolet_intensity(self):
+  def get_ultraviolet_intensity(self,soc):
     '''!
       @brief Get SEN0500/SEN0501 UV intensity index data 
+      @param soc UV sensor
       @return Return the obtained UV intensity index data
     '''
-    version = self.self._read_reg(0x05, 2)
-    if (version[0] << 8 | version[1]) == 0x1001:
-      rbuf = self._read_reg(0x10, 2)
+    rbuf = self._read_reg(0x10, 2)
+    if self._uart_i2c == I2C_MODE:
       data = rbuf[0] << 8 | rbuf[1]
-      ultraviolet = data / 1800
-    else:
-      rbuf = self._read_reg(0x10, 2)
-      if self._uart_i2c == I2C_MODE:
-        data = rbuf[0] << 8 | rbuf[1]
-      elif self._uart_i2c == UART_MODE:
-        data = rbuf[0]
+    elif self._uart_i2c == UART_MODE:
+      data = rbuf[0]
+    if (soc == LTR390UV):
       outputVoltage = 3.0 * data/1024
       ultraviolet = (outputVoltage - 0.99) * (15.0 - 0.0) / (2.9 - 0.99) + 0.0 
+    else:
+      outputVoltage = 3000.0 * data/1024
+      na =  (outputVoltage * 1000000000.0) / 4303300
+      ultraviolet = na / 113
     return round(ultraviolet,2)
       
   

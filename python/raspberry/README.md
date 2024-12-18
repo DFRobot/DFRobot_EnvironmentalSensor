@@ -64,9 +64,10 @@ python control_led.py
 
   '''!
     @brief Get SEN0500/SEN0501 UV intensity index data 
+    @param soc UV sensor
     @return Return the obtained UV intensity index data
   '''
-  def get_ultraviolet_intensity(self):
+  def get_ultraviolet_intensity(self,soc):
 
   '''!
     @brief Get SEN0500/SEN0501 luminous intensity data 

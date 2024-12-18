@@ -66,10 +66,11 @@ python control_led.py
   def get_humidity(self):
 
   '''!
-    @brief 获取SEN0500/SEN0501紫外线强度指数数据 
+    @brief 获取SEN0500/SEN0501紫外线强度指数数据
+    @param soc UV传感器 
     @return 返回获取的紫外线强度指数数据
   '''
-  def get_ultraviolet_intensity(self):
+  def get_ultraviolet_intensity(self,soc):
 
   '''!
     @brief 获取SEN0500/SEN0501光线强度数据 
