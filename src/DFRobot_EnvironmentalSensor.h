@@ -12,10 +12,13 @@
 #ifndef DFROBOT_MULTIFUNCTIONAL_ENVIRONMENTAL_SENSOR_H
 #define DFROBOT_MULTIFUNCTIONAL_ENVIRONMENTAL_SENSOR_H
 
+#pragma once
 #include "Arduino.h"
 #include "Wire.h"
 #include "DFRobot_RTU.h"
+#if !defined(ESP8266) && !defined(ESP32)
 #include "String.h"
+#endif
 
 #if (defined ARDUINO_AVR_UNO) && (defined ESP8266)
 #include "SoftwareSerial.h"

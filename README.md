@@ -1,6 +1,8 @@
 DFRobot_EnvironmentalSensor
 ===========================
 
+This has been modified to be compatible with ESP32 devices.
+
 * [中文版](./README_CN.md)
 
 The multifunctional environmental sensor(SEN0500/SEN0501) integrates the UV, illumination, atmospheric pressure and temperature and humidity detection functions into one. It features Gravity and Breakout interfaces, and supports UART and I2C data communication, which can be selected by the onboard switch. <br/>
