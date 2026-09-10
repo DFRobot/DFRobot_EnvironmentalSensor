@@ -170,7 +170,6 @@ uint8_t DFRobot_EnvironmentalSensor::readReg(uint16_t reg, void *pBuf, uint8_t s
     }
   if(_pWire){
     uint8_t _reg = reg * 2;
-    _pWire->begin();
     _pWire->beginTransmission(_addr);
     _pWire->write(_reg);
     _pWire->endTransmission();
